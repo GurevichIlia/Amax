@@ -1,0 +1,12 @@
+<!-- <div class="container"> -->
+<ul class="list-unstyled mb-3">
+  <li *ngFor="let emp of service.list" class="list-group-item mb-3">
+    <h3>{{emp.firstName}} {{emp.lastName}} <small><button class="btn btn-dark btn-sm" (click)="emp.hide = !emp.hide"><i
+            [ngClass]="!emp.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
+    <ul class="list-group mb-3" *ngIf="emp.hide">
+      <li class="list-group-item">Email: {{emp.email}}</li>
+      <li class="list-group-item">Phone: {{emp.phone}}</li>
+    </ul>
+  </li>
+</ul>
+<!-- </div> -->
