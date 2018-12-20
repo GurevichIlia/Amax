@@ -1,7 +1,8 @@
-<button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">Add User</button>
-<div class="card card-body mb-3" *ngIf="showUserForm">
+<button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">Hide</button>
+<div class="card card-body mb-3" *ngIf="!showUserForm">
   <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
     <h2>Add User</h2>
+    <input type="hidden" #id="ngModel" [(ngModel)]="service.formData.id" name="id">
     <div class="form-group">
       <label>First Name</label>
       <input [(ngModel)]="service.formData.firstName" [ngClass]="{'is-invalid':userFirstName.errors && userFirstName.touched}"
@@ -26,8 +27,8 @@
     </div>
     <div class="form-group">
       <label>E-mail</label>
-      <input [(ngModel)]="service.formData.email" [ngClass]="{'is-invalid':userEmail.errors && userEmail.touched}" type="text"
-        name="user.email" class="form-control" #userEmail="ngModel" required pattern="^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$">
+      <input [(ngModel)]="service.formData.email" type="text" name="email" class="form-control" #userEmail="ngModel"
+        required pattern="">
       <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
         E-mail required
       </div>
@@ -37,8 +38,8 @@
     </div>
     <div class="form-group">
       <label>Phone</label>
-      <input [(ngModel)]="service.formData.phone" [ngClass]="{'is-invalid':userPhone.errors && userPhone.touched}" type="number"
-        name="user.phone" class="form-control" #userPhone="ngModel" required minlength="8">
+      <input [(ngModel)]="service.formData.phone" [ngClass]="{'is-invalid':userPhone.errors && userPhone.touched}" type=""
+        name="phone" class="form-control" #userPhone="ngModel" minlength="8">
       <div [hidden]="!userPhone.errors?.required" class="invalid-feedback">
         Phone required
       </div>
@@ -47,6 +48,7 @@
       </div>
     </div>
     <button [disabled]="!userForm.form.valid" class="btn btn-lg btn-block">Submit</button>
+    <button (click)="updateUser(user)" class="btn btn-lg btn-block">Update</button>
 
   </form>
 </div>

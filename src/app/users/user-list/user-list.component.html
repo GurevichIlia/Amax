@@ -1,12 +1,16 @@
-<!-- <div class="container"> -->
-<ul class="list-unstyled mb-3">
-  <li *ngFor="let emp of service.list" class="list-group-item mb-3">
-    <h3>{{emp.firstName}} {{emp.lastName}} <small><button class="btn btn-dark btn-sm" (click)="emp.hide = !emp.hide"><i
-            [ngClass]="!emp.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
-    <ul class="list-group mb-3" *ngIf="emp.hide">
-      <li class="list-group-item">Email: {{emp.email}}</li>
-      <li class="list-group-item">Phone: {{emp.phone}}</li>
-    </ul>
-  </li>
-</ul>
-<!-- </div> -->
+<div class="container">
+  <ul class="list-unstyled mb-3">
+    <li *ngFor="let user of service.list" class="list-group-item mb-3">
+      <h3> {{user.firstName}} {{user.lastName}} <small><button class="btn btn-dark btn-sm" (click)="user.hide = !user.hide"><i
+              [ngClass]="!user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small></h3>
+      <button (click)="onDelete(user)" class="btn btn-light mb-2"><i class="fa fa-remove"></i></button>
+      <button (click)="editUser(user)" class="btn btn-light mb-2"><i class="fa fa-pencil"></i></button>
+      <ul class="list-group mb-3" *ngIf="user.hide">
+
+        <li class="list-group-item">Email: {{user.email}}</li>
+        <li class="list-group-item">Phone: {{user.phone}}</li>
+      </ul>
+    </li>
+  </ul>
+  <app-user></app-user>
+</div>

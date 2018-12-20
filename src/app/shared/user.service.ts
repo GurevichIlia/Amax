@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.module';
 import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   formData: User;
   list: User[];
-  readonly rootURL = 'http://localhost:55535/api/AMAXes';
+  readonly rootURL = 'http://localhost:52618/api/amaxes';
   constructor(private http: HttpClient) { }
 
   postUser(formData: User) {
@@ -18,4 +17,12 @@ export class UserService {
   refreshList() {
     this.http.get(this.rootURL).toPromise().then(res => this.list = res as User[]);
   }
+
+  putUser(formData: User) {
+    return this.http.put(this.rootURL + formData.id, formData);
+  }
+  deleteUser(formData: User) {
+    return this.http.delete(this.rootURL + '/' + formData.id);
+  }
 }
+

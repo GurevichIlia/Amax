@@ -9,7 +9,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  hide = true;
   constructor(private service: UserService) { }
 
   ngOnInit() {
@@ -20,28 +19,29 @@ export class UserComponent implements OnInit {
       form.resetForm();
     }
     this.service.formData = {
-      iD: null,
+      id: null,
       firstName: '',
       lastName: '',
-      birthDate: null,
       email: '',
       phone: ''
     };
   }
   onSubmit(form: NgForm) {
-
-    this.insertRecord(form);
+    if (form.value.id == null) {
+      this.insertRecord(form);
+    } else {
+      this.updateUser(form);
+      this.resetForm();
+    }
   }
   insertRecord(form: NgForm) {
-    this.service.postUser(form.value).subscribe(_res => {
+    this.service.postUser(form.value).subscribe(res => {
       this.resetForm(form);
+      this.service.refreshList();
     });
-    console.log();
   }
-  clicked() {
-    console.log('clicked');
-  }
-  showForm() {
-    this.hide = !this.hide;
+  updateUser(form: NgForm) {
+    this.service.putUser(form.value);
+    this.service.refreshList();
   }
 }
