@@ -47,8 +47,13 @@
         Must be at least 2 characters
       </div>
     </div>
+    <div class="form-group">
+      <label>Birthday</label>
+      <input [(ngModel)]="service.formData.birthDate" type="date" name="birthDate" class="form-control" #userPhone="ngModel"
+        minlength="8">
+    </div>
     <button [disabled]="!userForm.form.valid" class="btn btn-lg btn-block">Submit</button>
-    <button (click)="updateUser(user)" class="btn btn-lg btn-block">Update</button>
+    <!-- <button (click)="updateUser(user)" class="btn btn-lg btn-block">Update</button> -->
 
   </form>
 </div>
