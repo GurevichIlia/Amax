@@ -5,6 +5,7 @@ import { UserService } from '../../shared/user.service';
 
 import { User } from '../../shared/user.module';
 
+
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -12,6 +13,7 @@ import { User } from '../../shared/user.module';
 })
 export class UserDetailsComponent implements OnInit {
   user: User;
+  // birthDate = this.user.birthDate;
 
   constructor(
     private route: ActivatedRoute,

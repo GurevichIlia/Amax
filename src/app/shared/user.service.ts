@@ -13,7 +13,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   postUser(formData: User) {
-    console.log(formData);
     alert(`User ${formData.firstName} ${formData.lastName} succsesfully added`);
     return this.http.post(this.rootURL, formData);
 

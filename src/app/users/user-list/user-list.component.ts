@@ -23,7 +23,7 @@ export class UserListComponent implements OnInit {
     if (confirm('Are you sure to delete this user?')) {
       this.service.deleteUser(formData).subscribe(res => {
         this.service.refreshList();
-        alert('User ' + formData.firstName + ' ' + formData.lastName + ' successfully deleted');
+        alert(`User  ${formData.firstName} ${formData.lastName} successfully deleted`);
       });
     }
   }
@@ -40,15 +40,15 @@ export class UserListComponent implements OnInit {
       birthDate: null
     };
   }
-  onSubmit(form: NgForm) {
-    if (form.value.id == null) {
-      this.insertRecord(form);
-    } else {
-      this.updateUser(form);
-      this.resetForm();
-      console.log(form.value);
-    }
-  }
+  // onSubmit(form: NgForm) {
+  //   if (form.value.id == null) {
+  //     this.insertRecord(form);
+  //   } else {
+  //     this.updateUser(form);
+  //     this.resetForm();
+  //     console.log(form.value);
+  //   }
+  // }
   insertRecord(form: NgForm) {
     this.service.postUser(form.value).subscribe(res => {
       this.resetForm(form);
