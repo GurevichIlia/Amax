@@ -18,7 +18,6 @@ export class UserListComponent implements OnInit {
   }
   editUser(user: User) {
     this.service.formData = Object.assign({}, user);
-    console.log(user);
   }
   onDelete(formData: User) {
     if (confirm('Are you sure to delete this user?')) {
@@ -41,15 +40,15 @@ export class UserListComponent implements OnInit {
       birthDate: null
     };
   }
-  // onSubmit(form: NgForm) {
-  //   if (form.value.id == null) {
-  //     this.insertRecord(form);
-  //   } else {
-  //     this.updateUser(form);
-  //     this.resetForm();
-  //     console.log(form.value);
-  //   }
-  // }
+  onSubmit(form: NgForm) {
+    if (form.value.id == null) {
+      this.insertRecord(form);
+    } else {
+      this.updateUser(form);
+      this.resetForm();
+      console.log(form.value);
+    }
+  }
   insertRecord(form: NgForm) {
     this.service.postUser(form.value).subscribe(res => {
       this.resetForm(form);
@@ -59,7 +58,6 @@ export class UserListComponent implements OnInit {
   updateUser(form: NgForm) {
     this.service.putUser(form.value).subscribe(res => {
       this.service.refreshList();
-      console.log(form.value);
     });
   }
 }

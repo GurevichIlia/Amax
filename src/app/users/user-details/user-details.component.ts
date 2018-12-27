@@ -24,7 +24,6 @@ export class UserDetailsComponent implements OnInit {
 
     this.userService.getUser(id).subscribe((user: User) => this.user
       = user);
-    console.log(id);
   }
 
 }
