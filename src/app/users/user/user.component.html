@@ -1,59 +1,60 @@
-<button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">Hide</button>
-<div class="card card-body mb-3" *ngIf="!showUserForm">
-  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-    <h2>Add User</h2>
-    <input type="hidden" #id="ngModel" [(ngModel)]="service.formData.id" name="id">
-    <div class="form-group">
-      <label>First Name</label>
-      <input [(ngModel)]="service.formData.firstName" [ngClass]="{'is-invalid':userFirstName.errors && userFirstName.touched}"
-        type="text" name="firstName" class="form-control" #userFirstName="ngModel" required minlength="2">
-      <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
-        First name required
+<div class="jumbotron">
+  <button (click)="showUserForm = !showUserForm" class="btn btn-dark mb-3">Hide</button>
+  <div class="card card-body mb-3" *ngIf="!showUserForm">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <h2>Add User</h2>
+      <input type="hidden" #id="ngModel" [(ngModel)]="service.formData.id" name="id">
+      <div class="form-group">
+        <label>First Name</label>
+        <input [(ngModel)]="service.formData.firstName" [ngClass]="{'is-invalid':userFirstName.errors && userFirstName.touched}"
+          type="text" name="firstName" class="form-control" #userFirstName="ngModel" required minlength="2">
+        <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
+          First name required
+        </div>
+        <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
       </div>
-      <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
-        Must be at least 2 characters
+      <div class="form-group">
+        <label>Last Name</label>
+        <input [(ngModel)]="service.formData.lastName" [ngClass]="{'is-invalid':userLastName.errors && userLastName.touched}"
+          type="text" name="lastName" class="form-control" #userLastName="ngModel" required minlength="2">
+        <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">
+          Last name required
+        </div>
+        <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input [(ngModel)]="service.formData.lastName" [ngClass]="{'is-invalid':userLastName.errors && userLastName.touched}"
-        type="text" name="lastName" class="form-control" #userLastName="ngModel" required minlength="2">
-      <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">
-        Last name required
+      <div class="form-group">
+        <label>E-mail</label>
+        <input [(ngModel)]="service.formData.email" [ngClass]="{'is-invalid':userEmail.errors && userEmail.touched}"
+          type="text" name="email" class="form-control" #userEmail="ngModel" required pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$">
+        <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
+          E-mail required
+        </div>
+        <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
+          Email is not valid
+        </div>
       </div>
-      <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">
-        Must be at least 2 characters
+      <div class="form-group">
+        <label>Phone</label>
+        <input [(ngModel)]="service.formData.phone" [ngClass]="{'is-invalid':userPhone.errors && userPhone.touched}"
+          type="number" name="phone" class="form-control" #userPhone="ngModel" required minlength="8">
+        <div [hidden]="!userPhone.errors?.required" class="invalid-feedback">
+          Phone required
+        </div>
+        <div [hidden]="!userPhone.errors?.minlength" class="invalid-feedback">
+          Must be at least 2 characters
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>E-mail</label>
-      <input [(ngModel)]="service.formData.email" type="text" name="email" class="form-control" #userEmail="ngModel"
-        required pattern="">
-      <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
-        E-mail required
+      <div class="form-group">
+        <label>Birthday</label>
+        <input [(ngModel)]="service.formData.birthDate" type="date" name="birthDate" class="form-control" #birtdDate="ngModel"
+          required minlength="8">
       </div>
-      <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
-        Email is not valid
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Phone</label>
-      <input [(ngModel)]="service.formData.phone" [ngClass]="{'is-invalid':userPhone.errors && userPhone.touched}" type=""
-        name="phone" class="form-control" #userPhone="ngModel" minlength="8">
-      <div [hidden]="!userPhone.errors?.required" class="invalid-feedback">
-        Phone required
-      </div>
-      <div [hidden]="!userPhone.errors?.minlength" class="invalid-feedback">
-        Must be at least 2 characters
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Birthday</label>
-      <input [(ngModel)]="service.formData.birthDate" type="date" name="birthDate" class="form-control" #userPhone="ngModel"
-        minlength="8">
-    </div>
-    <button [disabled]="!userForm.form.valid" class="btn btn-lg btn-block">Submit</button>
-    <!-- <button (click)="updateUser(user)" class="btn btn-lg btn-block">Update</button> -->
-
-  </form>
+      <button [disabled]="!userForm.form.valid" class="btn btn-lg btn-block">Submit</button>
+      <!-- <button (click)="updateUser(user)" class="btn btn-lg btn-block">Update</button> -->
+    </form>
+  </div>
 </div>

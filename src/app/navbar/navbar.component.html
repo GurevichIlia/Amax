@@ -1,5 +1,18 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container">
-    <a href="#" class="navbar-brand">Amax Database</a>
+    <a routerLink="/" class="navbar-brand">Amax Database</a>
+    <div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/user-list" class="nav-link">Users</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/user-form" class="nav-link">Add User</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

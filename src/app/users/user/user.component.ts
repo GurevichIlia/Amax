@@ -31,8 +31,10 @@ export class UserComponent implements OnInit {
     if (form.value.id == null) {
       this.insertRecord(form);
     } else {
-      this.updateUser(form);
+      // this.updateUser(form);
       this.resetForm();
+      alert(`User ${form.value.firstName} ${form.value.lastName} succsesfully added`);
+      console.log(form.value);
     }
   }
   insertRecord(form: NgForm) {
@@ -41,8 +43,8 @@ export class UserComponent implements OnInit {
       this.service.refreshList();
     });
   }
-  updateUser(form: NgForm) {
-    this.service.putUser(form.value);
-    this.service.refreshList();
-  }
+  // updateUser(form: NgForm) {
+  //   this.service.putUser(form.value);
+  //   this.service.refreshList();
+  // }
 }

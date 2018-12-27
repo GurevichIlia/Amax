@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <a routerLink="/user-list" class="btn btn-dark btn sm mb-3">Back</a>
+
+    <ul class="list-instyled mb-3">
+        <li class="list-group-item">
+            <h3 class="mb-3">{{user.firstName}} {{user.lastName}}</h3>
+            <ul class="list-unstyled">
+                <li class="list-group-item">Email: {{user.email}}</li>
+                <li class="list-group-item">Phone: {{user.phone}}</li>
+                <li class="list-group-item">Birthday: {{user.birthDate}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
