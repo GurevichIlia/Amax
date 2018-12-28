@@ -36,7 +36,6 @@ export class UserComponent implements OnInit {
       alert(`User ${form.value.firstName} ${form.value.lastName} succsesfully added`);
     }
     window.location.href = 'http://localhost:4200/user-list';
-
   }
   insertRecord(form: NgForm) {
     this.service.postUser(form.value).subscribe(res => {
